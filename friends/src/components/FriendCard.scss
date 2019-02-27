@@ -18,4 +18,23 @@
             color:$link-hover;
         }
     }
+
+    button {
+        background:$background-color;
+        border:1px solid $text-color;
+        border-radius:4px;
+        color: $text-color;
+        font-size:1rem;
+        // outline:none;
+        margin:4px;
+        padding:8px;
+        transition-duration: 1s;
+        width:150px;
+
+        &:hover {
+            background:$text-color;
+            color:$background-color;
+            cursor:pointer;
+        }
+    }
 }

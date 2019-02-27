@@ -7,6 +7,7 @@ const FriendCard = props => {
             <h3>{props.name}</h3>
             <p>{props.age} years old</p>
             <a href={`${props.email}`}>{props.email}</a>
+            <button onClick={props.deleteFriend} value={props.id}>Delete</button>
         </div>
      );
 }

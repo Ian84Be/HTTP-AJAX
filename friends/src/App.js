@@ -22,16 +22,27 @@ export default class App extends Component {
       .catch(err => console.log(err));
   }
 
+  deleteFriend = e => {
+    // e.preventDefault();
+    console.log(e.target.value);
+    axios
+      .delete(`http://localhost:5000/friends/${e.target.value}`)
+      .then(res => console.log(res.data));
+    window.location.reload();
+  }
+
   render() {
     return (
       <div className="App">
         <h1>myFriends</h1>
         <FriendForm />
+        <div className="friend-container">
         {this.state.friends.map(friend => {
           return (
-            <FriendCard {...friend} key={friend.id}/>
-          )
-        })}
+            <FriendCard {...friend} key={friend.id} deleteFriend={this.deleteFriend}/>
+            )
+          })}
+          </div>
       </div>
     );
   }

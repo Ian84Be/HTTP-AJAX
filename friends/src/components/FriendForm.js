@@ -14,12 +14,12 @@ class FriendForm extends Component {
 
     handleChange = e => {
         e.preventDefault();
-        if (e.target.type === 'checkbox') {
-            return (
-                this.setState({ [e.target.name]: e.target.checked })
-            )
-        } 
-        else this.setState({
+        // if (e.target.type === 'checkbox') {
+        //     return (
+        //         this.setState({ [e.target.name]: e.target.checked })
+        //     )
+        // } else 
+        this.setState({
             [e.target.name]: e.target.value
         });
     }
