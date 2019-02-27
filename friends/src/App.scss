@@ -6,6 +6,11 @@
   justify-content: center;
 }
 
+* {
+  box-sizing: border-box;
+  transition-duration: 1s;
+}
+
 body {
   background:palegoldenrod;
 }
