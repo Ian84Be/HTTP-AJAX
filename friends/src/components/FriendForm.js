@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './FriendForm.scss';
+import axios from 'axios';
 
 class FriendForm extends Component {
     constructor(props) {
@@ -23,9 +24,29 @@ class FriendForm extends Component {
         });
     }
 
+    onSubmit = e => {
+        // e.preventDefault();
+        console.log(this.state);
+        axios
+            .post('http://localhost:5000/friends', this.state)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+              });
+    }
+    
+    resetForm = e => {
+        e.preventDefault();
+        this.setState({
+            name:'',
+            age:'',
+            email:'',
+        });
+    }
+
     render() { 
         return ( 
-            <form className="FriendForm" onSubmit={this.handleSubmit}>
+            <form className="FriendForm" onSubmit={this.onSubmit}>
                 <input onChange={this.handleChange}
                     name="name"
                     type="text"
@@ -49,7 +70,7 @@ class FriendForm extends Component {
 
                 <div className="FriendForm__buttons">
                 <input type="submit" value="Submit" />
-                <input type="reset"/>
+                <input type="reset" onClick={this.resetForm}/>
                 </div>
 
             </form>
