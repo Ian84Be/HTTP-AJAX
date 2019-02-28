@@ -1,30 +1,49 @@
 @import './_palette';
-
-@mixin center() {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+@import './_mixins';
 
 * {
   box-sizing: border-box;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
 }
 
 body {
-  background:palegoldenrod;
+  background:$background-color--lite;
 }
 
 .App {
   @include center;
+  background:$background-color;
+  border:1px solid $text-color;
   flex-direction: column;
+  margin:8px auto;
+  max-width:80%;
 
-  color: black;
+  h1 {
+    color: black;
+    margin:8px;
+    padding:0;
+  }
 
   .friend-container {
     @include center;
-    // border:1px solid white;
     flex-wrap: wrap;
     max-width:700px;
+  }
+
+  .nav {
+    @include center;
+
+    .nav__links {
+      @include center;
+      a {
+        color:$link-color;
+        margin:4px;
+        &:hover{
+          color:$link-hover;
+        }
+      }
+    }
+
+    
   }
 }

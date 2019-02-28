@@ -6,30 +6,29 @@ const FriendForm = props => {
         <form className="FriendForm" onSubmit={props.addFriend}>
             <input onChange={props.handleChange}
                 name="name"
-                type="text"
                 placeholder="name"
+                type="text"
                 value={props.name}
-            required />
+                required />
                 
             <input onChange={props.handleChange}
                 name="age"
-                type="text"
                 placeholder="age"
+                type="text"
                 value={props.age}
-            required />
+                />
 
             <input onChange={props.handleChange}
                 name="email"
-                type="text"
                 placeholder="email"
+                type="text"
                 value={props.email}
-            required />
+                />
 
             <div className="FriendForm__buttons">
-            <input type="submit" value="Submit" />
-            <input type="reset" onClick={props.resetForm}/>
+                <input type="submit" value="Add" />
+                <input type="reset" onClick={props.resetForm}/>
             </div>
-
         </form>
     );
 }
