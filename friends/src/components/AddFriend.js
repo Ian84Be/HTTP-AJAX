@@ -1,9 +1,9 @@
 import React from 'react';
-import './FriendForm.scss';
+import './AddFriend.scss';
 
-const FriendForm = props => {
+const AddFriend = props => {
     return (  
-        <form className="FriendForm" onSubmit={props.addFriend}>
+        <form className="AddFriend" onSubmit={props.addFriend}>
             <input onChange={props.handleChange}
                 name="name"
                 placeholder="name"
@@ -25,11 +25,11 @@ const FriendForm = props => {
                 value={props.email}
                 />
 
-            <div className="FriendForm__buttons">
+            <div className="AddFriend__buttons">
                 <input type="submit" value="Add" />
                 <input type="reset" onClick={props.resetForm}/>
             </div>
         </form>
     );
 }
-export default FriendForm;
+export default AddFriend;

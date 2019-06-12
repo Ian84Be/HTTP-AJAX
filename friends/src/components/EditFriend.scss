@@ -1,0 +1,14 @@
+@import '../App.scss';
+
+.EditFriend {
+    @include center;
+    flex-direction: column;
+
+    input[type=text] {
+        @include formInput;
+    }
+
+    input[type=submit], input[type=reset] {
+        @include button;
+    }
+}

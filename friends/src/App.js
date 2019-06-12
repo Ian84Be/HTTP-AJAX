@@ -4,13 +4,12 @@ import {
   BrowserRouter as Router,
   NavLink,
   Route,
-  Redirect,
-  withRouter
 } from 'react-router-dom';
 
 import './App.scss';
+import AddFriend from './components/AddFriend';
+import EditFriend from './components/EditFriend';
 import FriendCard from './components/FriendCard';
-import FriendForm from './components/FriendForm';
 
 export default class App extends Component {
   state = {
@@ -20,7 +19,6 @@ export default class App extends Component {
       email:'',
       name:'',
     },
-    toHome:false,
   };
 
   componentDidMount() {
@@ -47,10 +45,14 @@ export default class App extends Component {
             email:'',
             name:'',
           },
-          toHome:true,
         })
       })
       .catch(err => console.log(err));
+  }
+
+  editFriend = e => {
+    e.preventDefault();
+    console.log(e.target.value);
   }
 
   deleteFriend = e => {
@@ -75,17 +77,19 @@ export default class App extends Component {
     });
   }
 
-  onSubmit = e => {
-    e.preventDefault();
-    e.persist();
-  }
-
   resetForm = e => {
     e.preventDefault();
     this.setState({
-      age:'',
-      email:'',
-      name:'',
+      formFriend: {
+        age:'',
+        email:'',
+        name:'',
+      },
+      editFriend: {
+        age:'',
+        email:'',
+        name:'',
+      }
     });
   }
 
@@ -105,30 +109,43 @@ export default class App extends Component {
       </div>
 
         <Route path="/add" render={props => (
-          <FriendForm 
+          <AddFriend
+          {...props} 
           addFriend={this.addFriend}
           age={this.state.formFriend.age}
           email={this.state.formFriend.email}
           handleChange={this.handleChange}
           name={this.state.formFriend.name} 
-          onChange={this.handleChange}
-          onSubmit={this.onSubmit}
           resetForm={this.resetForm}
           />
         )}/>
-        
 
-        <div className="friend-container">
-        {this.state.friends.map(friend => {
-          return (
-            <FriendCard
-            {...friend} 
-            deleteFriend={this.deleteFriend}
-            key={friend.id}
+        <Route path="/edit/:name" render={props => (
+          <EditFriend
+            {...props}
+            age={this.state.formFriend.age}
+            editFriend={this.editFriend}
+            email={this.state.formFriend.email}
+            friends={this.state.friends}
+            handleChange={this.handleChange}
+            name={this.state.formFriend.name}
             />
-            )
-          })}
-          </div>
+        )} />
+        
+          <Route path="/" render={props => (
+            <div className="friend-container">
+            {this.state.friends.map(friend => {
+              return (
+                <FriendCard
+                {...friend} 
+                deleteFriend={this.deleteFriend}
+                key={friend.id}
+                />
+                )
+              })}
+              </div>
+          )} />
+        
 
       </div>
           </Router>

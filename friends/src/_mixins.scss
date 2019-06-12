@@ -22,3 +22,18 @@
         cursor:pointer;
     }
 }
+
+@mixin formInput() {
+    background:$background-color--lite;
+        border:1px solid $text-color;
+        border-radius:4px;
+        color:$text-color;
+        margin:4px;
+        outline:none;
+        padding:8px;
+        width:150px;
+
+        &:focus {
+            background:white;
+        }
+}

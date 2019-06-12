@@ -18,6 +18,14 @@ body {
   margin:8px auto;
   max-width:80%;
 
+  a {
+    color:$link-color;
+    margin:4px;
+    &:hover{
+      color:$link-hover;
+    }
+  }
+
   h1 {
     color: black;
     margin:8px;
@@ -35,15 +43,6 @@ body {
 
     .nav__links {
       @include center;
-      a {
-        color:$link-color;
-        margin:4px;
-        &:hover{
-          color:$link-hover;
-        }
-      }
     }
-
-    
   }
 }
